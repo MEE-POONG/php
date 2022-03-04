@@ -1,58 +1,43 @@
-<?PHP
-session_start();
-if(!isset($_SESSION['administrator_user'])){
-	require_once("modules/login/views/index.inc.php"); 
-}else{
-	$login_user = $_SESSION['administrator_user'];
-	if(!isset($_REQUEST['content'])){
-		$_REQUEST['content'] = "home";
-	}
-	$content = $_REQUEST['content'];
-}
-if(!isset($login_user)){
-	require_once("modules/login/views/index.inc.php"); 
-}else{
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <title>Telerik® UI for PHP &hearts; Twitter Bootstrap: Responsive demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <?php require_once 'includes/includes.php'; ?>
+        <?php require_once 'lib/Kendo/Autoload.php'; ?>
+        <script src="theme-chooser.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GANTHPAT PLACE</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <?php include 'includes/header.php';?>
 
-    <link rel="icon" href="template/backend/images/logo/logo.png " type="image/png">
-    <link href="template/backend/css/bootstrap.min.css" rel="stylesheet">
-    <link href="template/backend/css/simple-sidebar.css" rel="stylesheet">
-    <link href="template/backend/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div id="example" class="container">
+            <?php include 'includes/whatIsThisPage.php';?>
 
+            <?php include 'includes/menu.php';?>
+            
+            <div class="row clearfix">
+                <div class="col-lg-4">
+                    <?php include 'includes/profile.php';?>
+                </div>
 
-    <script src="template/backend/js/jquery.min.js"></script>
-    <script src="template/backend/js/bootstrap.min.js"></script>
+                <div class="col-lg-8">
+                    <?php include 'includes/tabstrip.php';?>
+                </div>
+            </div>
 
-    
-</head>
+            <?php include 'includes/profileSetup/profileSetup.php';?>
 
-<body>
+            <?php include 'includes/orders.php';?>            
 
-    <div id="wrapper" class="toggled">
-        <?php require_once('views/header.inc.php') ?>
-        <?php require_once('views/menu.inc.php') ?>
-        <div id="page-content-wrapper">
-            <?php require_once("views/body.inc.php"); ?>
+            <?php include 'includes/schedule.php';?>  
+
+            <?php include 'includes/latestPhotoUploads.php';?>
+
+            <?php include 'includes/faq.php';?>
+
+            <footer>Copyright &copy; <?php echo date("Y"); ?>, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</footer>
         </div>
-    </div>
-    <script>
-    function menu_toggle() {
-        $("#wrapper").toggleClass("toggled");
-    }
-    </script>
-
-</body>
-
+    </body>
 </html>
-
-<?PHP }?>
